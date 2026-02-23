@@ -360,15 +360,15 @@ impl State {
         ctx.print(info_x, text_y, &format!("Score : {}", self.score));
         text_y += 2;
         ctx.print(info_x, text_y, "Controls :");
-        text_y += 1;
+        text_y += 2;
         ctx.print(info_x, text_y, "Left / Right : Move");
-        text_y += 1;
+        text_y += 2;
         ctx.print(info_x, text_y, "Up           : Rotate");
-        text_y += 1;
+        text_y += 2;
         ctx.print(info_x, text_y, "Down         : Soft drop");
-        text_y += 1;
+        text_y += 2;
         ctx.print(info_x, text_y, "Space        : Hard drop");
-        text_y += 1;
+        text_y += 2;
         ctx.print(info_x, text_y, "Esc          : Quit game");
 
         if self.game_over {
