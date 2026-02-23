@@ -337,7 +337,7 @@ impl State {
         // 다음 조각 표시 (오른쪽 여백에 작게 표시)
         let info_x = right_x + 4;
         let info_y = BOARD_Y;
-        ctx.print(info_x, info_y, "다음 블록:");
+        ctx.print(info_x, info_y, "NEXT:");
         let preview_x = info_x + 2;
         let preview_y = info_y + 2;
         let preview_piece = Piece {
@@ -357,22 +357,22 @@ impl State {
 
         // 점수 및 안내 (오른쪽 영역에 배치)
         let mut text_y = preview_y + 8;
-        ctx.print(info_x, text_y, &format!("점수: {}", self.score));
+        ctx.print(info_x, text_y, &format!("Score : {}", self.score));
         text_y += 2;
-        ctx.print(info_x, text_y, "조작:");
+        ctx.print(info_x, text_y, "Controls :");
         text_y += 1;
-        ctx.print(info_x, text_y, "← → : 좌우 이동");
+        ctx.print(info_x, text_y, "Left / Right : Move");
         text_y += 1;
-        ctx.print(info_x, text_y, "↑   : 회전");
+        ctx.print(info_x, text_y, "Up           : Rotate");
         text_y += 1;
-        ctx.print(info_x, text_y, "↓   : 빠르게 내리기");
+        ctx.print(info_x, text_y, "Down         : Soft drop");
         text_y += 1;
-        ctx.print(info_x, text_y, "Space: 하드 드롭");
+        ctx.print(info_x, text_y, "Space        : Hard drop");
         text_y += 1;
-        ctx.print(info_x, text_y, "Esc : 종료");
+        ctx.print(info_x, text_y, "Esc          : Quit game");
 
         if self.game_over {
-            let msg = "GAME OVER - R 키로 재시작";
+            let msg = "GAME OVER - Press R to restart";
             let x = BOARD_X + 1;
             let y = BOARD_Y + BOARD_HEIGHT / 2;
             ctx.print_color(
@@ -407,6 +407,8 @@ fn main() -> BError {
     // 창 크기를 상단 상수와 동일하게 120x60으로 설정
     let context = BTermBuilder::simple(SCREEN_WIDTH, SCREEN_HEIGHT)?
         .with_title("Console Tetris (bracket-lib)")
+        // .with_font("terminal8x8.png", 8, 8)   // 기본
+        .with_font("terminal16x16.png", 16, 16) // 큰 폰트 추가
         .build()?;
 
     let gs = State::new();
